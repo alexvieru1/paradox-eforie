@@ -153,8 +153,7 @@ export default function TerasaPage() {
               La doi pași de plajă
             </h2>
             <p className="mb-6 max-w-[42ch] text-base leading-relaxed text-body">
-              Terasa Paradox se află pe Ion Movilă 25, în centrul stațiunii Eforie
-              Sud — la câteva minute de mers de mare și de unitățile de cazare.
+              {terasa.locationBody}
             </p>
             <div className="flex items-center gap-3 text-[15px] text-[#3a2e22]">
               <span className="flex size-9 flex-none items-center justify-center rounded-full bg-surface text-terracotta">

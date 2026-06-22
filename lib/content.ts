@@ -183,6 +183,8 @@ export const terasa = {
   href: "/terasa",
   more: "Află mai multe",
   address: "Ion Movilă 25, Eforie Sud",
+  locationBody:
+    "Terasa Paradox se află pe Ion Movilă 25, în centrul stațiunii Eforie Sud — la câteva minute de mers de mare și de unitățile de cazare.",
   intro: [
     "Terasa Paradox este locul unde se adună familia la masă, pe Ion Movilă 25 — la doi pași de plajă. Bucătărie proaspătă, porții generoase și prețuri prietenoase, într-o atmosferă relaxată, în aer liber.",
     "De dimineață servim mic dejun, iar seara terasa se aprinde pentru cină — pește proaspăt, preparate la grătar și un pahar de vin sub stele. Te primim cu drag, fără rezervare sau cu o masă rezervată la telefon.",
@@ -249,6 +251,8 @@ export const plaja = {
   href: "/plaja",
   more: "Află mai multe",
   address: "Eforie Sud, jud. Constanța",
+  locationBody:
+    "Plaja Paradox este în centrul stațiunii Eforie Sud, cu nisip fin și cele mai frumoase apusuri de pe litoral.",
   gallery: [
     { id: "p1", caption: "foto · plaja la apus" },
     { id: "p2", caption: "foto · șezlonguri și umbrele" },

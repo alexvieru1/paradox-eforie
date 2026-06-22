@@ -69,8 +69,7 @@ export default function PlajaPage() {
               Marea, la doi pași
             </h2>
             <p className="mb-6 max-w-[42ch] text-base leading-relaxed text-body">
-              Plaja Paradox este în centrul stațiunii Eforie Sud, cu nisip fin și
-              cele mai frumoase apusuri de pe litoral.
+              {plaja.locationBody}
             </p>
             <div className="mb-7 flex items-center gap-3 text-[15px] text-[#3a2e22]">
               <span className="flex size-9 flex-none items-center justify-center rounded-full bg-surface text-terracotta">
