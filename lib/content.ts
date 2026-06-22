@@ -47,6 +47,23 @@ export interface GalleryItem {
   caption: string;
 }
 
+export interface MenuItem {
+  name: string;
+  price: string;
+  /** Optional one-line description. */
+  desc?: string;
+}
+
+export interface MenuCategory {
+  category: string;
+  items: MenuItem[];
+}
+
+export interface HoursEntry {
+  label: string;
+  value: string;
+}
+
 export interface Unit {
   slug: string;
   name: string;
@@ -163,12 +180,94 @@ export const terasa = {
   heading: "Mâncare proaspătă, gust de vacanță",
   body: "O bucătărie variată, cu preparate proaspete la prețuri accesibile — de la micul dejun în familie până la cina cu vin, sub stele, pe Ion Movilă 25.",
   tags: ["Mic dejun", "Pește proaspăt", "Prețuri accesibile", "Terasă în aer liber"],
+  href: "/terasa",
+  more: "Află mai multe",
+  address: "Ion Movilă 25, Eforie Sud",
+  locationBody:
+    "Terasa Paradox se află pe Ion Movilă 25, în centrul stațiunii Eforie Sud — la câteva minute de mers de mare și de unitățile de cazare.",
+  intro: [
+    "Terasa Paradox este locul unde se adună familia la masă, pe Ion Movilă 25 — la doi pași de plajă. Bucătărie proaspătă, porții generoase și prețuri prietenoase, într-o atmosferă relaxată, în aer liber.",
+    "De dimineață servim mic dejun, iar seara terasa se aprinde pentru cină — pește proaspăt, preparate la grătar și un pahar de vin sub stele. Te primim cu drag, fără rezervare sau cu o masă rezervată la telefon.",
+  ],
+  gallery: [
+    { id: "t1", caption: "foto · terasa seara" },
+    { id: "t2", caption: "foto · pește proaspăt la grătar" },
+    { id: "t3", caption: "foto · mic dejun în familie" },
+    { id: "t4", caption: "foto · preparate de sezon" },
+    { id: "t5", caption: "foto · atmosfera în aer liber" },
+    { id: "t6", caption: "foto · desert de casă" },
+  ],
+  menu: [
+    {
+      category: "Mic dejun",
+      items: [
+        { name: "Omletă cu brânză și verdețuri", price: "18 lei", desc: "ouă proaspete, brânză de Eforie, pâine prăjită" },
+        { name: "Clătite cu gem de casă", price: "16 lei" },
+        { name: "Platou continental", price: "24 lei", desc: "mezeluri, brânzeturi, legume, ou fiert" },
+      ],
+    },
+    {
+      category: "Pește & fructe de mare",
+      items: [
+        { name: "Pește proaspăt la grătar", price: "preț de piață", desc: "în funcție de captura zilei" },
+        { name: "Midii marinare", price: "42 lei" },
+        { name: "Saramură de crap", price: "38 lei" },
+      ],
+    },
+    {
+      category: "De la grătar",
+      items: [
+        { name: "Mici de casă (5 buc.)", price: "22 lei" },
+        { name: "Ceafă de porc", price: "32 lei" },
+        { name: "Piept de pui la grătar", price: "28 lei" },
+      ],
+    },
+    {
+      category: "Desert & băuturi",
+      items: [
+        { name: "Papanași cu smântână și dulceață", price: "20 lei" },
+        { name: "Limonadă de casă", price: "12 lei" },
+        { name: "Vin de casă (250 ml)", price: "14 lei" },
+      ],
+    },
+  ],
+  hours: [
+    { label: "Luni – Vineri", value: "08:00 – 23:00" },
+    { label: "Sâmbătă – Duminică", value: "08:00 – 24:00" },
+    { label: "Sezon", value: "mai – septembrie" },
+  ],
+  reserve: {
+    eyebrow: "Rezervă o masă",
+    heading: "Te așteptăm pe terasă",
+    body: "Vino direct sau sună-ne să-ți pregătim o masă — răspundem cu drag și te ajutăm cu orice.",
+    cta: "Rezervă o masă",
+  },
 };
 
 export const plaja = {
   eyebrow: "Plaja Paradox",
   heading: "Plaja noastră, cu cele mai frumoase apusuri",
   body: "Nisip fin, șezlonguri, și marea la doi pași. Dimineața liniște pentru copii, seara cerul se colorează peste apă — momentul preferat al oaspeților noștri.",
+  href: "/plaja",
+  more: "Află mai multe",
+  address: "Eforie Sud, jud. Constanța",
+  locationBody:
+    "Plaja Paradox este în centrul stațiunii Eforie Sud, cu nisip fin și cele mai frumoase apusuri de pe litoral.",
+  gallery: [
+    { id: "p1", caption: "foto · plaja la apus" },
+    { id: "p2", caption: "foto · șezlonguri și umbrele" },
+    { id: "p3", caption: "foto · nisip fin dimineața" },
+    { id: "p4", caption: "foto · copii la mare" },
+    { id: "p5", caption: "foto · marea liniștită" },
+    { id: "p6", caption: "foto · apus peste apă" },
+  ],
+  cta: {
+    eyebrow: "Cazare lângă plajă",
+    heading: "Stai la câțiva pași de mare",
+    body: "Toate unitățile Paradox sunt aproape de plajă — alege-ți cazarea și bucură-te de apusuri în fiecare seară.",
+    label: "Vezi cazarea",
+    href: "/#cazare",
+  },
 };
 
 export interface Testimonial {

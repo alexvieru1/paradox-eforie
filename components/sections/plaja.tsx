@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 import { Eyebrow } from "@/components/ui/primitives";
 import { plaja } from "@/lib/content";
@@ -41,6 +43,12 @@ export function Plaja() {
         <p className="max-w-[46ch] text-[clamp(16px,2vw,20px)] leading-relaxed text-[#f4e6d4]">
           {plaja.body}
         </p>
+        <Link
+          href={plaja.href}
+          className="mt-7 inline-flex items-center gap-1.5 rounded-full bg-[#fff8ee]/95 px-[22px] py-3 text-[15px] font-bold text-sea transition-transform hover:-translate-y-0.5"
+        >
+          {plaja.more} <ArrowRight className="size-4" />
+        </Link>
       </Reveal>
     </section>
   );
