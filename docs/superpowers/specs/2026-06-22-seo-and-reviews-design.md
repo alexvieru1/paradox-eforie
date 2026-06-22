@@ -74,7 +74,7 @@ All SEO strings live in `content.ts`/`seo.ts`, not inline in components.
 
 - **Organization + LocalBusiness** (sitewide, in layout): legal name
   "Paradox Company SRL", logo, telephone (`contact.phone`), address, `sameAs`
-  (Google profile, Facebook, Instagram — pending URLs).
+  (Google profile + Facebook, Instagram, TikTok — placeholder URLs to fill).
 - **Hotel / LodgingBusiness** per unit: name, PostalAddress, geo, `starRating`,
   `amenityFeature`, `priceRange` (generic `€€` unless provided),
   `paymentAccepted` incl. "Vouchere de vacanță", `petsAllowed` n/a, `sameAs`.
@@ -109,7 +109,7 @@ All SEO strings live in `content.ts`/`seo.ts`, not inline in components.
 
 ## Data to confirm before launch (scaffolded as placeholders)
 
-1. Facebook / Instagram URLs (for `sameAs`)
+1. Facebook / Instagram / TikTok URLs (for `sameAs`) — scaffolded as placeholders
 2. Exact geo for Hotel Paradox (Oituz 4) and Paradox H (Cantacuzino 79) —
    approximated otherwise
 3. Price-range indicator per unit (optional; `€€` default)
