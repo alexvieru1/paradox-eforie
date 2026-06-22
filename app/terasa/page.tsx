@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Phone, Clock, MapPin, UtensilsCrossed } from "lucide-react";
+import { JsonLd } from "@/components/seo/json-ld";
+import { restaurantLd, breadcrumbLd } from "@/lib/seo";
 import { Gallery } from "@/components/sections/gallery";
 import { SiteFooter } from "@/components/sections/site-footer";
 import { MobileCallBar } from "@/components/sections/mobile-call-bar";
@@ -22,6 +24,15 @@ export const metadata = {
 export default function TerasaPage() {
   return (
     <main className="pb-24 lg:pb-0">
+      <JsonLd
+        data={[
+          restaurantLd(),
+          breadcrumbLd([
+            { name: "Paradox", url: "/" },
+            { name: "Terasă", url: "/terasa" },
+          ]),
+        ]}
+      />
       {/* breadcrumb + title */}
       <div className="mx-auto max-w-[1240px] px-5 pb-2 pt-[clamp(80px,12vh,120px)] sm:px-8 lg:px-16">
         <nav className="mb-4 text-[13px] text-faint">
