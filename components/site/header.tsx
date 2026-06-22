@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { Phone, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { contact, nav } from "@/lib/content";
@@ -27,7 +28,7 @@ export function Header() {
       )}
     >
       <div className="flex items-center justify-between px-5 py-4 sm:px-8 lg:px-16">
-        <a href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <span className="font-display text-2xl font-semibold tracking-[0.01em] text-sea">
             Paradox
           </span>
@@ -36,7 +37,7 @@ export function Header() {
             <br />
             Sud
           </span>
-        </a>
+        </Link>
 
         {/* desktop nav */}
         <nav className="hidden items-center gap-8 text-sm font-semibold lg:flex">
