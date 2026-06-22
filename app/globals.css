@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  /* Direction A — warm golden-hour palette */
+  --cream: #fbf6ee;        /* page background */
+  --sand: #f2e7d6;         /* alternating sections, icon chips */
+  --surface: #ffffff;      /* cards */
+  --ink: #2a2018;          /* base text */
+  --sea: #1e3d52;          /* headings / primary brand */
+  --body: #5a4e40;         /* paragraph body */
+  --muted: #7a6e5e;        /* secondary text */
+  --faint: #a08a6a;        /* captions / meta */
+  --terracotta: #c0633f;   /* accent / CTA / links / eyebrows */
+  --terracotta-dk: #a8512f;/* CTA hover */
+  --voucher: #1f8a5b;      /* holiday-voucher badge */
+  --gold: #e0a33f;         /* review stars */
+  --footer: #16293a;       /* footer background */
+  --line: #eadbc6;         /* hairlines on cream */
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-sand: var(--sand);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-sea: var(--sea);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-terracotta: var(--terracotta);
+  --color-terracotta-dk: var(--terracotta-dk);
+  --color-voucher: var(--voucher);
+  --color-gold: var(--gold);
+  --color-footer: var(--footer);
+  --color-line: var(--line);
+
+  --font-display: var(--font-newsreader);
+  --font-sans: var(--font-mulish);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-mulish), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+::selection {
+  background: var(--terracotta);
+  color: var(--cream);
+}
+
+/* anchor targets clear the fixed header */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
