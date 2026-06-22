@@ -7,8 +7,16 @@ import { PhotoPlaceholder, Eyebrow } from "@/components/ui/primitives";
 import { terasa, contact } from "@/lib/content";
 
 export const metadata = {
-  title: "Terasa Paradox · Eforie Sud",
-  description: terasa.body,
+  title: "Terasa Paradox — restaurant în Eforie Sud",
+  description:
+    "Terasa Paradox: bucătărie proaspătă, pește la grătar și prețuri accesibile, pe Ion Movilă 25 în Eforie Sud. Rezervă o masă la telefon.",
+  alternates: { canonical: "/terasa" },
+  openGraph: {
+    title: "Terasa Paradox — restaurant în Eforie Sud",
+    description: "Bucătărie proaspătă și prețuri accesibile, la doi pași de plajă în Eforie Sud.",
+    url: "/terasa",
+    type: "website",
+  },
 };
 
 export default function TerasaPage() {

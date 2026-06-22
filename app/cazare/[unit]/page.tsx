@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
@@ -21,6 +22,25 @@ import { units, unitsBySlug, type GalleryItem } from "@/lib/content";
 
 export function generateStaticParams() {
   return units.map((u) => ({ unit: u.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ unit: string }>;
+}): Promise<Metadata> {
+  const { unit: slug } = await params;
+  const unit = unitsBySlug[slug];
+  if (!unit) return {};
+  const title = `${unit.name} ${unit.stars}★ — cazare în Eforie Sud`;
+  const description = `${unit.blurb} ${unit.meta}. Acceptăm vouchere de vacanță.`;
+  const url = `/cazare/${unit.slug}`;
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: { title, description, url, type: "website" },
+  };
 }
 
 const AMENITY_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {

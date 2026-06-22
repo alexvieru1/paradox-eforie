@@ -7,8 +7,16 @@ import { PhotoPlaceholder, Eyebrow } from "@/components/ui/primitives";
 import { plaja } from "@/lib/content";
 
 export const metadata = {
-  title: "Plaja Paradox · Eforie Sud",
-  description: plaja.body,
+  title: "Plaja Paradox — plajă în Eforie Sud",
+  description:
+    "Plaja Paradox: nisip fin, șezlonguri și cele mai frumoase apusuri din Eforie Sud, la doi pași de cazare. Marea Neagră, exact cum o visezi.",
+  alternates: { canonical: "/plaja" },
+  openGraph: {
+    title: "Plaja Paradox — plajă în Eforie Sud",
+    description: "Nisip fin și apusuri superbe pe litoralul Mării Negre, în Eforie Sud.",
+    url: "/plaja",
+    type: "website",
+  },
 };
 
 export default function PlajaPage() {
