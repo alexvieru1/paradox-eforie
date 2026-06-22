@@ -1,5 +1,5 @@
 import { Reveal } from "@/components/motion/reveal";
-import { BookingBlock } from "@/components/sections/booking-block";
+import { BookingStepper } from "@/components/sections/booking-stepper";
 import { voucherBand } from "@/lib/content";
 
 /**
@@ -24,10 +24,7 @@ export function VoucherBand() {
           </div>
         </Reveal>
         <Reveal delay={0.1}>
-          <BookingBlock
-            partnerIds={["booking", "travelmint", "litoralul"]}
-            title="Rezervă acum"
-          />
+          <BookingStepper />
         </Reveal>
       </div>
     </section>

@@ -22,14 +22,12 @@ export interface Partner {
   initials: string;
   /** Brand color for the placeholder chip. */
   color: string;
-  /** Where this partner listing lives (placeholder "#"). */
-  href: string;
 }
 
 export const partners: Record<PartnerId, Partner> = {
-  booking: { id: "booking", name: "Booking.com", initials: "B.", color: "#003580", href: "#" },
-  travelmint: { id: "travelmint", name: "Travelmint.ro", initials: "Tm", color: "#1fa89b", href: "#" },
-  litoralul: { id: "litoralul", name: "Litoralul Românesc", initials: "LR", color: "#c0633f", href: "https://www.litoralulromanesc.ro/" },
+  booking: { id: "booking", name: "Booking.com", initials: "B.", color: "#003580" },
+  travelmint: { id: "travelmint", name: "Travelmint.ro", initials: "Tm", color: "#1fa89b" },
+  litoralul: { id: "litoralul", name: "Litoralul Românesc", initials: "LR", color: "#c0633f" },
 };
 
 /* ------------------------------------------------------------------- units */
@@ -74,8 +72,8 @@ export interface Unit {
   meta: string;
   blurb: string;
   distances: Distance[];
-  /** Variable per unit — only these partners are shown in the Rezervă block. */
-  partners: PartnerId[];
+  /** Real per-partner booking URLs for this unit (single source of truth). */
+  bookingLinks: Partial<Record<PartnerId, string>>;
   acceptsVouchers: true;
   amenities?: string[];
   gallery?: GalleryItem[];
@@ -97,7 +95,11 @@ export const units: Unit[] = [
       { label: "de plajă", value: "300 m" },
       { label: "de Lacul Techirghiol", value: "200 m" },
     ],
-    partners: ["booking", "travelmint", "litoralul"],
+    bookingLinks: {
+      booking: "https://www.booking.com", // PLACEHOLDER — Hotel Paradox on Booking.com
+      travelmint: "https://www.travelmint.ro", // PLACEHOLDER — Hotel Paradox on Travelmint
+      litoralul: "https://www.litoralulromanesc.ro/", // PLACEHOLDER — Hotel Paradox on Litoralul
+    },
     acceptsVouchers: true,
     amenities: [
       "Wi-Fi gratuit",
@@ -135,7 +137,11 @@ export const units: Unit[] = [
       { label: "de plajă", value: "200 m" },
       { label: "liniște și intimitate", value: "✓" },
     ],
-    partners: ["booking", "litoralul"],
+    bookingLinks: {
+      booking: "https://www.booking.com", // PLACEHOLDER — Vila Paradox on Booking.com
+      litoralul: "https://www.litoralulromanesc.ro/", // PLACEHOLDER — Vila Paradox on Litoralul
+      // travelmint: added later — Travelmint × Vila Paradox
+    },
     acceptsVouchers: true,
   },
   {
@@ -151,12 +157,35 @@ export const units: Unit[] = [
       { label: "de plajă", value: "300 m" },
       { label: "camere noi, moderne", value: "✓" },
     ],
-    partners: ["booking", "travelmint"],
+    bookingLinks: {
+      booking: "https://www.booking.com", // PLACEHOLDER — Paradox H on Booking.com
+      travelmint: "https://www.travelmint.ro", // PLACEHOLDER — Paradox H on Travelmint
+      litoralul: "https://www.litoralulromanesc.ro/", // PLACEHOLDER — Paradox H on Litoralul
+    },
     acceptsVouchers: true,
   },
 ];
 
 export const unitsBySlug = Object.fromEntries(units.map((u) => [u.slug, u]));
+
+/** Stepper data: for each partner, the units bookable there (with the real URL). */
+export const bookingByPartner: Record<
+  PartnerId,
+  { slug: string; name: string; stars: 2 | 3; href: string }[]
+> = (Object.keys(partners) as PartnerId[]).reduce(
+  (acc, pid) => {
+    acc[pid] = units
+      .filter((u) => u.bookingLinks[pid])
+      .map((u) => ({ slug: u.slug, name: u.name, stars: u.stars, href: u.bookingLinks[pid]! }));
+    return acc;
+  },
+  {} as Record<PartnerId, { slug: string; name: string; stars: 2 | 3; href: string }[]>,
+);
+
+/** Partners that have at least one bookable unit (drives the stepper's step 1). */
+export const partnersWithLinks: PartnerId[] = (Object.keys(partners) as PartnerId[]).filter(
+  (pid) => bookingByPartner[pid].length > 0,
+);
 
 /* -------------------------------------------------------------- page copy */
 
