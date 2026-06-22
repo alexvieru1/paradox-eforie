@@ -321,8 +321,8 @@ export const footer = {
 };
 
 export const nav = [
-  { href: "#cazare", label: "Cazare" },
-  { href: "#terasa", label: "Terasă" },
-  { href: "#plaja", label: "Plajă" },
-  { href: "#recenzii", label: "Recenzii" },
+  { href: "/#cazare", label: "Cazare" },
+  { href: "/#terasa", label: "Terasă" },
+  { href: "/#plaja", label: "Plajă" },
+  { href: "/#recenzii", label: "Recenzii" },
 ];

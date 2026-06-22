@@ -42,13 +42,13 @@ export function Header() {
         {/* desktop nav */}
         <nav className="hidden items-center gap-8 text-sm font-semibold lg:flex">
           {nav.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               className="text-[#3a2e22] transition-colors hover:text-terracotta"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
           <a
             href={contact.phoneHref}
@@ -75,14 +75,14 @@ export function Header() {
       {open && (
         <div className="fixed inset-0 top-[64px] z-40 flex flex-col gap-1 bg-cream px-7 pb-7 pt-2 lg:hidden">
           {nav.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
               className="border-b border-line py-3.5 font-display text-2xl text-sea"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
           <a
             href={contact.phoneHref}
