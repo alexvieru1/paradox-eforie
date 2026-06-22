@@ -1,4 +1,5 @@
-import { Phone } from "lucide-react";
+import Link from "next/link";
+import { Phone, ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/motion/reveal";
 import { PhotoPlaceholder, Eyebrow } from "@/components/ui/primitives";
 import { terasa, contact } from "@/lib/content";
@@ -34,12 +35,20 @@ export function Terasa() {
                 </span>
               ))}
             </div>
-            <a
-              href={contact.phoneHref}
-              className="inline-flex items-center gap-2.5 rounded-full bg-sea px-[26px] py-3.5 text-[15px] font-bold text-cream transition-transform hover:-translate-y-0.5"
-            >
-              <Phone className="size-4" /> Rezervă o masă
-            </a>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+              <a
+                href={contact.phoneHref}
+                className="inline-flex items-center gap-2.5 rounded-full bg-sea px-[26px] py-3.5 text-[15px] font-bold text-cream transition-transform hover:-translate-y-0.5"
+              >
+                <Phone className="size-4" /> Rezervă o masă
+              </a>
+              <Link
+                href={terasa.href}
+                className="inline-flex items-center gap-1.5 text-[15px] font-bold text-terracotta transition-colors hover:text-terracotta-dk"
+              >
+                {terasa.more} <ArrowRight className="size-4" />
+              </Link>
+            </div>
           </div>
         </Reveal>
       </div>
