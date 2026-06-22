@@ -235,7 +235,7 @@ export default async function UnitPage({
             </p>
             <VoucherPill full />
           </div>
-          <BookingBlock partnerIds={unit.partners} />
+          <BookingBlock bookingLinks={unit.bookingLinks} />
         </div>
       </section>
 

@@ -22,14 +22,12 @@ export interface Partner {
   initials: string;
   /** Brand color for the placeholder chip. */
   color: string;
-  /** Where this partner listing lives (placeholder "#"). */
-  href: string;
 }
 
 export const partners: Record<PartnerId, Partner> = {
-  booking: { id: "booking", name: "Booking.com", initials: "B.", color: "#003580", href: "#" },
-  travelmint: { id: "travelmint", name: "Travelmint.ro", initials: "Tm", color: "#1fa89b", href: "#" },
-  litoralul: { id: "litoralul", name: "Litoralul Românesc", initials: "LR", color: "#c0633f", href: "https://www.litoralulromanesc.ro/" },
+  booking: { id: "booking", name: "Booking.com", initials: "B.", color: "#003580" },
+  travelmint: { id: "travelmint", name: "Travelmint.ro", initials: "Tm", color: "#1fa89b" },
+  litoralul: { id: "litoralul", name: "Litoralul Românesc", initials: "LR", color: "#c0633f" },
 };
 
 /* ------------------------------------------------------------------- units */
@@ -74,8 +72,6 @@ export interface Unit {
   meta: string;
   blurb: string;
   distances: Distance[];
-  /** Variable per unit — only these partners are shown in the Rezervă block. */
-  partners: PartnerId[];
   /** Real per-partner booking URLs for this unit (single source of truth). */
   bookingLinks: Partial<Record<PartnerId, string>>;
   acceptsVouchers: true;
@@ -99,7 +95,6 @@ export const units: Unit[] = [
       { label: "de plajă", value: "300 m" },
       { label: "de Lacul Techirghiol", value: "200 m" },
     ],
-    partners: ["booking", "travelmint", "litoralul"],
     bookingLinks: {
       booking: "https://www.booking.com", // PLACEHOLDER — Hotel Paradox on Booking.com
       travelmint: "https://www.travelmint.ro", // PLACEHOLDER — Hotel Paradox on Travelmint
@@ -142,7 +137,6 @@ export const units: Unit[] = [
       { label: "de plajă", value: "200 m" },
       { label: "liniște și intimitate", value: "✓" },
     ],
-    partners: ["booking", "litoralul"],
     bookingLinks: {
       booking: "https://www.booking.com", // PLACEHOLDER — Vila Paradox on Booking.com
       litoralul: "https://www.litoralulromanesc.ro/", // PLACEHOLDER — Vila Paradox on Litoralul
@@ -163,7 +157,6 @@ export const units: Unit[] = [
       { label: "de plajă", value: "300 m" },
       { label: "camere noi, moderne", value: "✓" },
     ],
-    partners: ["booking", "travelmint"],
     bookingLinks: {
       booking: "https://www.booking.com", // PLACEHOLDER — Paradox H on Booking.com
       travelmint: "https://www.travelmint.ro", // PLACEHOLDER — Paradox H on Travelmint
