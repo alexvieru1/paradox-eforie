@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import {
@@ -12,6 +13,8 @@ import {
   Waves,
   MapPin,
 } from "lucide-react";
+import { JsonLd } from "@/components/seo/json-ld";
+import { hotelLd, breadcrumbLd } from "@/lib/seo";
 import { Gallery } from "@/components/sections/gallery";
 import { BookingBlock } from "@/components/sections/booking-block";
 import { SiteFooter } from "@/components/sections/site-footer";
@@ -21,6 +24,25 @@ import { units, unitsBySlug, type GalleryItem } from "@/lib/content";
 
 export function generateStaticParams() {
   return units.map((u) => ({ unit: u.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ unit: string }>;
+}): Promise<Metadata> {
+  const { unit: slug } = await params;
+  const unit = unitsBySlug[slug];
+  if (!unit) return {};
+  const title = `${unit.name} ${unit.stars}★ — cazare în Eforie Sud`;
+  const description = `${unit.blurb} ${unit.meta}. Acceptăm vouchere de vacanță.`;
+  const url = `/cazare/${unit.slug}`;
+  return {
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: { title, description, url, type: "website" },
+  };
 }
 
 const AMENITY_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -52,6 +74,16 @@ export default async function UnitPage({
 
   return (
     <main className="pb-24 lg:pb-0">
+      <JsonLd
+        data={[
+          hotelLd(unit),
+          breadcrumbLd([
+            { name: "Paradox", url: "/" },
+            { name: "Cazare", url: "/#cazare" },
+            { name: unit.name, url: `/cazare/${unit.slug}` },
+          ]),
+        ]}
+      />
       {/* breadcrumb + title */}
       <div className="mx-auto max-w-[1240px] px-5 pb-2 pt-[clamp(80px,12vh,120px)] sm:px-8 lg:px-16">
         <nav className="mb-4 text-[13px] text-faint">

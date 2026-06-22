@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Newsreader, Mulish } from "next/font/google";
 import { Header } from "@/components/site/header";
 import { MotionProvider } from "@/components/motion/motion-provider";
+import { JsonLd } from "@/components/seo/json-ld";
+import { SITE_URL, SITE_NAME, organizationLd } from "@/lib/seo";
 import "./globals.css";
 
 const newsreader = Newsreader({
@@ -20,9 +22,26 @@ const mulish = Mulish({
 });
 
 export const metadata: Metadata = {
-  title: "Paradox — Vacanța ta la mare, în Eforie Sud",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Paradox Eforie Sud — cazare, terasă și plajă la Marea Neagră",
+    template: "%s · Paradox Eforie Sud",
+  },
   description:
-    "Hotel Paradox, Vila Paradox, Paradox H, Terasa și Plaja Paradox — cazare, terasă și plajă la câțiva pași de Marea Neagră, în stațiunea Eforie Sud. Acceptăm vouchere de vacanță.",
+    "Cazare în Eforie Sud la câțiva pași de plajă: Hotel Paradox, Vila Paradox și Paradox H. Terasă și plajă proprii, aproape de Techirghiol. Acceptăm vouchere de vacanță.",
+  applicationName: SITE_NAME,
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    locale: "ro_RO",
+    siteName: SITE_NAME,
+    url: SITE_URL,
+    title: "Paradox Eforie Sud — cazare la Marea Neagră",
+    description:
+      "Cazare, terasă și plajă în Eforie Sud, aproape de Techirghiol. Acceptăm vouchere de vacanță.",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({
@@ -34,6 +53,7 @@ export default function RootLayout({
       className={`${newsreader.variable} ${mulish.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-cream text-ink">
+        <JsonLd data={organizationLd()} />
         <MotionProvider>
           <Header />
           {children}
