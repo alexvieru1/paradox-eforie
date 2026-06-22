@@ -169,7 +169,7 @@ export default function TerasaPage() {
       </section>
 
       <SiteFooter />
-      <MobileCallBar reserveHref="#program" reserveLabel="Rezervă masă" />
+      <MobileCallBar reserveHref="#program" reserveLabel={terasa.reserve.cta} />
     </main>
   );
 }
